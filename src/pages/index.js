@@ -85,7 +85,14 @@ const IndexPage = () => {
       value={selectedOption}
       onChange={e => setSelectedOption(e.target.value)}>
       {options.map(option => (
-        <option key={option.value} value={option.value}>{option.name}</option>
+        <option
+          key={option.value}
+          selected={option.value === null ? 'selected' : null}
+          value={option.value}
+          disabled={option.value === null ? true : null} 
+        >
+            {option.name}
+        </option>
       ))}
     </select>
     <div style={{ width: `500px`, margin: `20px`, height: `300px`, border: `2px solid black`, marginBottom: `1.45rem`}}>
