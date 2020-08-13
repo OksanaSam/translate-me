@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 import { useState } from "react"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Autocomplete from '../components/autocomplete';
+import '../components/styles.css'
 
 const IndexPage = () => {
   const [userInput, setUserInput] = useState('')
@@ -68,6 +70,9 @@ const IndexPage = () => {
   return (
   <div>
     <SEO title="Home" />
+    <Autocomplete
+      suggestions={['White', 'Black', 'Green', 'Blue', 'Yellow', 'Red']}
+    />
     <h1>Hi folks</h1>
     <p>Welcome to my Gatsby translations app!</p>
     <label className="visuallyHidden">Translate a phrase</label>
