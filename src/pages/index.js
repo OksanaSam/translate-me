@@ -24,24 +24,22 @@ const IndexPage = () => {
   
   const axios = require('axios')
   
-  const translate = (keyPhrase) => {
-    axios({
-      url: "https://translate.yandex.net/api/v1.5/tr.json/translate?",
-      method: "GET",
-      responseType: 'JSON',
-      params: {
-        key: "trnsl.1.1.20190518T054559Z.6098481762cecacb.6b721345d2262aa024e24b0aa7bbc42011422525",
-        text: keyPhrase,
-        lang: selectedOption
-      },
-    })
-      .then((response) => {
-        setTranslateResult(response.data.text[0])
-
+  const translate = async (keyPhrase) => {
+    try {
+      let response = await axios({
+        url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?',
+        method: 'GET',
+        responseType: 'JSON',
+        params: {
+          key: 'trnsl.1.1.20190518T054559Z.6098481762cecacb.6b721345d2262aa024e24b0aa7bbc42011422525',
+          text: keyPhrase,
+          lang: selectedOption
+        }
       })
-      .catch((error) => {
-        alert(error);
-      });
+      setTranslateResult(response.data.text[0])
+    } catch (error) {
+      alert(error)
+    }
   };
   
 
